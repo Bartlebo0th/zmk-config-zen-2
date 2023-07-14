@@ -60,11 +60,15 @@
 //     };
 // };
 
-&mt {
+&mt {  // mod-tap config
+    flavor = "balanced";
+    tapping-term-ms = <200>;
     quick-tap-ms = <125>;
 };
 
-&lt {
+&lt {  // layer-tap config
+    flavor = "balanced";
+    tapping-term-ms = <200>;
     quick-tap-ms = <125>;
 };
 
