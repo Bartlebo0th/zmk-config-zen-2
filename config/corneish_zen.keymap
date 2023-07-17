@@ -51,14 +51,14 @@
 
 // * REPEAT KEY *
 // left index finger combo
-                repeat_key{
+                combo_repeat_key_l{
                         timeout-ms = <100>;
                         key-positions = <16 17>;
                         bindings = <&key_repeat>;
                 };
 
 // right index finger combo
-                repeat_key{
+                combo_repeat_key_r{
                         timeout-ms = <100>;
                         key-positions = <18 19>;
                         bindings = <&key_repeat>;
@@ -66,19 +66,19 @@
 
 // * HYPER MOD KEY*
 // left index finger combo
-                hyper{
+                combo_hyper_l{
                         timeout-ms = <100>;
                         key-positions = <28 29>;
-                        bindings = <LS(LC(LA(LGUI)))>;
+                        bindings = <&kp LS(LC(LA(LGUI)))>;
                 };
 
 Left Shift + Left Control + Left Alt + Left Windows
 
 // right index finger combo
-                hyper{
+                combo_hyper_r{
                         timeout-ms = <100>;
                         key-positions = <30 31>;
-                        bindings = <LS(LC(LA(LGUI)))>;
+                        bindings = <&kp LS(LC(LA(LGUI)))>;
                 };
         };
 };
