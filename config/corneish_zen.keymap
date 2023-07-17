@@ -95,12 +95,16 @@
 //                         bindings = <&sk LSHFT>, <&caps_word>;
 //                 };
 
-                &sk {
+// tweaking sticky key behaviour
+		sk: behavior_sticky_key {
+                        compatible = "zmk,behavior-sticky-key";
+                        label = "STICKY_KEY";
+                        #binding-cells = <1>;
                         release-after-ms = <1000>;
+                        bindings = <&kp>;
+                        ignore-modifiers;
                         quick-release;
-                        // /delete-property/ ignore-modifiers;
                 };
-
 
 // * DOUBLE TAP TO HOLD KEY *
 // Adding quick-tap-ms to both mod-tap and layer-tap so you can tap then hold.
