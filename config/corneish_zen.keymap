@@ -25,13 +25,15 @@
         combos {
                 compatible = "zmk,combos";
 
-// pressing both shift keys toggles capslock
+// * CAPSLOCK *
+// pressing both shift keys
                 combo_caps{
                         timeout-ms = <100>;
                         key-positions = <24 35>;
                         bindings = <&kp CAPS>;
                 };
 
+// * SPOTLIGHT SEARCH *
 // RSHIFT+/ is CMD+SPACE to spotlight search on Mac
                 combo_spotlight{
                         timeout-ms = <100>;
@@ -39,11 +41,44 @@
                         bindings = <&kp LG(SPACE)>;
                 };
 
-// ENTER+TAB  to turn on/off Gaming Layer 4
+// * GAMING LAYER *
+// ENTER+TAB  to toggle on/off
                 combo_gaming_a{
                         timeout-ms = <100>;
                         key-positions = <0 5>;
                         bindings = <&tog L4>;
+                };
+
+// * REPEAT KEY *
+// left index finger combo
+                repeat_key{
+                        timeout-ms = <100>;
+                        key-positions = <16 17>;
+                        bindings = <&key_repeat>;
+                };
+
+// right index finger combo
+                repeat_key{
+                        timeout-ms = <100>;
+                        key-positions = <18 19>;
+                        bindings = <&key_repeat>;
+                };
+
+// * HYPER MOD KEY*
+// left index finger combo
+                hyper{
+                        timeout-ms = <100>;
+                        key-positions = <28 29>;
+                        bindings = <LS(LC(LA(LGUI)))>;
+                };
+
+Left Shift + Left Control + Left Alt + Left Windows
+
+// right index finger combo
+                hyper{
+                        timeout-ms = <100>;
+                        key-positions = <30 31>;
+                        bindings = <LS(LC(LA(LGUI)))>;
                 };
         };
 };
