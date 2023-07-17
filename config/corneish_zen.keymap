@@ -170,7 +170,7 @@
 //                                                     | -/A+C | SP/ALT| _/CMD |            |  (/L2 | BS/L1 | )/L3  |
 //                                                     +-------+-------+-------+            +-------+-------+-------+
 
-                        label = "  Base";
+                        label = " Base L0";
                         bindings = <
 
  &kp TAB        &kp Q  &kp W  &kp F               &kp P           &kp B                     &kp J        &kp L        &kp U           &kp Y    &kp APOS  &kp DEL
@@ -283,7 +283,7 @@
 //                                                                                                                          |       |
 //                                                                                                                          +-------+
 
-                        label = "  Game";
+                        label = " Game";
                         bindings = <
 
                           &trans     &kp N1  &kp N2  &kp N3     &kp N4    &kp N5            &none  &none  &none  &none  &none  &none
