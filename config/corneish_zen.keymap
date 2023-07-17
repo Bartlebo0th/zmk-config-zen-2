@@ -44,9 +44,10 @@
         };
 };
 
-// / {
-//         behaviors {
-// // global quick tap means any hold-tap key can still be 'held' when needed, by tapping once first
+/ {
+        behaviors {
+
+// // global quick tap means any hold-tap key uses quick tap regardless of what key was just pressed
 //                 gqt: global-quick-tap {
 //                         compatible = "zmk,behavior-hold-tap";
 //                         label = "GLOBAL_QUICK_TAP";
@@ -56,21 +57,24 @@
 //                         quick-tap-ms = <125>;
 //                         global-quick-tap;
 //                         bindings = <&kp>, <&kp>;
+
+                        &mt {  // mod-tap config
+                        flavor = "balanced";
+                        tapping-term-ms = <200>;
+                        quick-tap-ms = <125>;
+                        };
+
+                        &lt {  // layer-tap config
+                        flavor = "balanced";
+                        tapping-term-ms = <200>;
+                        quick-tap-ms = <125>;
+                        };
+
 //         };
 //     };
 // };
 
-&mt {  // mod-tap config
-    flavor = "balanced";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <125>;
-};
 
-&lt {  // layer-tap config
-    flavor = "balanced";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <125>;
-};
 
 // LAYER KEYMAPS
 / {
