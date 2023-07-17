@@ -72,8 +72,6 @@
                         bindings = <&kp LS(LC(LA(LGUI)))>;
                 };
 
-Left Shift + Left Control + Left Alt + Left Windows
-
 // right index finger combo
                 combo_hyper_r{
                         timeout-ms = <100>;
