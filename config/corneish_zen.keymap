@@ -85,15 +85,15 @@
 / {
 	behaviors {
 
-// * STICKY SHIFT & CAPS-WORD *
-// sticky shift with double tap to activate caps_word
-                ss_cw: behavior_sticky_shift_caps_word {
-                        compatible = "zmk,behavior-tap-dance";
-                        label = "STICKY_SHIFT_CAPS_WORD";
-                        #binding-cells = <0>;
-                        tapping-term-ms = <200>;
-                        bindings = <&sk LSHFT>, <&caps_word>;
-                };
+// // * STICKY SHIFT & CAPS-WORD *
+// // sticky shift with double tap to activate caps_word
+//                 ss_cw: behavior_sticky_shift_caps_word {
+//                         compatible = "zmk,behavior-tap-dance";
+//                         label = "STICKY_SHIFT_CAPS_WORD";
+//                         #binding-cells = <0>;
+//                         tapping-term-ms = <200>;
+//                         bindings = <&sk LSHFT>, <&caps_word>;
+//                 };
 
 // * DOUBLE TAP TO HOLD KEY *
 // Adding quick-tap-ms to both mod-tap and layer-tap so you can tap then hold.
@@ -157,8 +157,8 @@
 
  &kp TAB        &kp Q  &kp W  &kp F               &kp P           &kp B                     &kp J        &kp L        &kp U           &kp Y    &kp APOS  &kp DEL
  &mt LCTRL ESC  &kp A  &kp R  &kp S               &kp T           &kp G                     &kp M        &kp N        &kp E           &kp I    &kp O     &mt RCTRL RET
-//  &sk LSHFT      &kp Z  &kp X  &kp C               &kp D           &kp V                     &kp K        &kp H        &kp COMMA       &kp DOT  &kp FSLH  &sk RSHFT
- &ss_cw         &kp Z  &kp X  &kp C               &kp D           &kp V                     &kp K        &kp H        &kp COMMA       &kp DOT  &kp FSLH  &ss_cw
+ &sk LSHFT      &kp Z  &kp X  &kp C               &kp D           &kp V                     &kp K        &kp H        &kp COMMA       &kp DOT  &kp FSLH  &sk RSHFT
+//  &ss_cw         &kp Z  &kp X  &kp C               &kp D           &kp V                     &kp K        &kp H        &kp COMMA       &kp DOT  &kp FSLH  &ss_cw
                               &mt LA(LGUI) MINUS  &mt LALT SPACE  &mt LGUI UNDER            &lt L2 LPAR  &lt L1 BSPC  &lt L3 RPAR
 
                         >;
