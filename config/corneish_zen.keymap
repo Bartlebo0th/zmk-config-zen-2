@@ -17,6 +17,10 @@
 #define L4 4
 #define L5 5
 
+// to experiment with quick tap hold speeds
+#define QUICK_TAP_MS 175
+
+// * COMBOS *
 / {
         combos {
                 compatible = "zmk,combos";
@@ -44,6 +48,7 @@
         };
 };
 
+// * BEHAVIOURS *
 / {
 	behaviors {
 
@@ -54,7 +59,7 @@
                         #binding-cells = <2>;
                         flavor = "balanced";
                         tapping-term-ms = <200>;
-                        quick-tap-ms = <125>;
+                        quick-tap-ms = <QUICK_TAP_MS>;
                         bindings = <&kp>, <&kp>;
                 };
 
@@ -63,27 +68,27 @@
                         compatible = "zmk,behavior-hold-tap";
                         label = "LAYER_TAP";
                         #binding-cells = <2>;
-                        flavor = "tap-preferred";
+                        flavor = "balanced";
                         tapping-term-ms = <200>;
-                        quick-tap-ms = <125>;
+                        quick-tap-ms = <QUICK_TAP_MS>;
                         bindings = <&mo>, <&kp>;
                 };
 
-// // global quick tap - a hold-tap key uses quick tap regardless of what key was pressed before it
-//                 gqt: global_quick_tap {
-//                         compatible = "zmk,behavior-hold-tap";
-//                         label = "GLOBAL_QUICK_TAP";
-//                         #binding-cells = <2>;
-//                         flavor = "tap-preferred";
-//                         tapping-term-ms = <200>;
-//                         quick-tap-ms = <125>;
-//                         global-quick-tap;
-//                         bindings = <&kp>, <&kp>;
-                // };
+// global quick tap - a hold-tap key uses quick tap regardless of what key was pressed before it
+                gqt: global_quick_tap {
+                        compatible = "zmk,behavior-hold-tap";
+                        label = "GLOBAL_QUICK_TAP";
+                        #binding-cells = <2>;
+                        flavor = "balanced";
+                        tapping-term-ms = <200>;
+                        quick-tap-ms = <QUICK_TAP_MS>;
+                        global-quick-tap;
+                        bindings = <&kp>, <&kp>;
+                };
         };
 };
 
-// LAYER KEYMAPS
+// * LAYER KEYMAPS *
 / {
         keymap {
                 compatible = "zmk,keymap";
