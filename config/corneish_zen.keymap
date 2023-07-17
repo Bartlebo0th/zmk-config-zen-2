@@ -49,7 +49,7 @@
                         bindings = <&tog L4>;
                 };
 
-// * REPEAT KEY *
+// * REPEAT KEYS *
 // left index finger combo
                 combo_repeat_key_l{
                         timeout-ms = <100>;
@@ -64,7 +64,7 @@
                         bindings = <&key_repeat>;
                 };
 
-// * HYPER MOD KEY*
+// * HYPER MOD KEYS *
 // left index finger combo
                 combo_hyper_l{
                         timeout-ms = <100>;
