@@ -86,24 +86,31 @@
 	behaviors {
 
 // // * STICKY SHIFT & CAPS-WORD *
-// // sticky shift with double tap to activate caps_word
-//                 ss_cw: behavior_sticky_shift_caps_word {
-//                         compatible = "zmk,behavior-tap-dance";
-//                         label = "STICKY_SHIFT_CAPS_WORD";
-//                         #binding-cells = <0>;
-//                         tapping-term-ms = <200>;
-//                         bindings = <&sk LSHFT>, <&caps_word>;
-//                 };
-
 // tweaking sticky key behaviour
 		sk: behavior_sticky_key {
                         compatible = "zmk,behavior-sticky-key";
                         label = "STICKY_KEY";
                         #binding-cells = <1>;
-                        release-after-ms = <1000>;
+                        release-after-ms = <2000>;
                         bindings = <&kp>;
                         ignore-modifiers;
                         quick-release;
+                };
+
+		caps_word: behavior_caps_word {
+			compatible = "zmk,behavior-caps-word";
+			label = "CAPS_WORD";
+			#binding-cells = <0>;
+			continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
+		};
+
+// // sticky shift with double tap to activate caps_word
+                ss_cw: behavior_sticky_shift_caps_word {
+                        compatible = "zmk,behavior-tap-dance";
+                        label = "STICKY_SHIFT_CAPS_WORD";
+                        #binding-cells = <0>;
+                        tapping-term-ms = <300>;
+                        bindings = <&sk LSHFT>, <&caps_word>;
                 };
 
 // * DOUBLE TAP TO HOLD KEY *
