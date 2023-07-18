@@ -5,7 +5,7 @@
 / {
   chosen {
     zmk,matrix_transform = &default_transform;
-    //zmk,matrix_transform = &five_column_transform;
+//  zmk,matrix_transform = &five_column_transform;
   };
 };
 
@@ -137,7 +137,18 @@
                         bindings = <&mo>, <&kp>;
                 };
 
-// // global quick tap - a hold-tap key uses quick tap regardless of what key was pressed before it
+// * NUM WORD LAYER *
+                num_word: behavior_num_word {
+                        compatible = "zmk,behavior-caps-word";
+                        label = "NUM_WORD";
+                        #binding-cells = <0>;
+                        layers = <L1>;                                // insert location of numbers layer here
+                        continue-list = <BACKSPACE DELETE DOT COMMA>;  // adjust as desired
+                        ignore-numbers;                                // numbers don't deactivate the layer
+                };
+
+// //  * GLOBAL QUICK TAP *
+// // a hold-tap key uses quick tap regardless of what key was pressed before it
 //                 gqt: global_quick_tap {
 //                         compatible = "zmk,behavior-hold-tap";
 //                         label = "GLOBAL_QUICK_TAP";
@@ -170,7 +181,7 @@
 //                                                     | -/A+C | SP/ALT| _/CMD |            |  (/L2 | BS/L1 | )/L3  |
 //                                                     +-------+-------+-------+            +-------+-------+-------+
 
-                        label = " Base L0";
+                        label = " Base L0 ";
                         bindings = <
 
  &kp TAB        &kp Q  &kp W  &kp F               &kp P           &kp B                     &kp J        &kp L        &kp U           &kp Y    &kp APOS  &kp DEL
@@ -196,7 +207,7 @@
 //                                                     | -/A+C | 0/ALT | _/CMD |            |  (/L2 | BS/L1 | )/L3  |
 //                                                     +-------+-------+-------+            +-------+-------+-------+
 
-                        label = " L1_Nav";
+                        label = " L1_Nav ";
                         bindings = <
 
                               &trans  &none  &kp N7  &kp N8  &kp N9       &none             &none   &none     &none      &none      &none      &trans
@@ -221,7 +232,7 @@
 //                                                     | -/A+C | 0/ALT | _/CMD |            |  (/L2 | BS/L1 | )/L3  |
 //                                                     +-------+-------+-------+            +-------+-------+-------+
 
-                        label = " L2_Syms";
+                        label = " L2_Syms ";
                         bindings = <
 
                   &trans  &kp EXCL   &kp AT      &kp LS(N3)  &kp DLLR  &none                &none      &kp AMPS  &kp ASTRK  &kp PLUS   &kp EQUAL  &trans
@@ -246,7 +257,7 @@
 //                                                     | -/A+C | 0/ALT | _/CMD |            |  (/L2 | BS/L1 | )/L3  |
 //                                                     +-------+-------+-------+            +-------+-------+-------+
 
-                        label = " L3_Func";
+                        label = " L3_Func ";
                         bindings = <
 
                                  &trans  &kp F12  &kp F7  &kp F8  &kp F9  &none             &none       &none         &none         &none         &none         &trans
@@ -283,7 +294,7 @@
 //                                                                                                                          |       |
 //                                                                                                                          +-------+
 
-                        label = " Game";
+                        label = " Game ";
                         bindings = <
 
                           &trans     &kp N1  &kp N2  &kp N3     &kp N4    &kp N5            &none  &none  &none  &none  &none  &none
@@ -308,7 +319,7 @@
 //                                                     |       |       | HELD  |            |       |       |       |
 //                                                     +-------+-------+-------+            +-------+-------+-------+
 
-                        label = " Game_B";
+                        label = " Game_B ";
                         bindings = <
 
                          &kp GRAVE  &kp F1   &kp F2  &kp F3     &kp F4    &kp F5            &none  &none  &none  &none  &none  &none
