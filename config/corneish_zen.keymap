@@ -10,13 +10,13 @@
 };
 
 // for readability
-#define L0 0
-#define L1 1
-#define L2 2
-#define L3 3
-#define L4 4
-#define L5 5
-#define L6 6
+#define L0 0 // base
+#define L1 1 // num nav
+#define L2 2 // symbols
+#define L3 3 // function keys
+#define L4 4 // bluetooth
+#define L5 5 // gaming a
+#define L6 6 // gaming b
 
 
 // to experiment with quick tap hold speeds
@@ -86,7 +86,7 @@
 
 // * BLUETOOTH TOGGLE *
 // both index fingers combo
-                combo_f_keys{
+                combo_bluetooth{
                         timeout-ms = <100>;
                         key-positions = <4 5 6 7>;
                         bindings = <&tog L4>;
