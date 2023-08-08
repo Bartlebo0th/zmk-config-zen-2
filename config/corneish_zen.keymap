@@ -17,6 +17,7 @@
 #define L4 4
 #define L5 5
 
+
 // to experiment with quick tap hold speeds
 #define QUICK_TAP_MS 175
 
@@ -46,38 +47,50 @@
                 combo_gaming_a{
                         timeout-ms = <100>;
                         key-positions = <0 5>;
+                        bindings = <&tog L5>;
+                };
+
+// * HYPER KEYS *
+// left index finger combo
+                combo_hyper_key_l{
+                        timeout-ms = <100>;
+                        key-positions = <16 17>;
+                        bindings = <&kp LS(LC(LA(LGUI)))>;
+                };
+
+// right index finger combo
+                combo_hyper_key_r{
+                        timeout-ms = <100>;
+                        key-positions = <18 19>;
+                        bindings = <&kp LS(LC(LA(LGUI)))>;
+                };
+
+// * NUM-NAV TOGGLE *
+// right index finger combo on K/H
+                combo_num_toggle{
+                        timeout-ms = <100>;
+                        key-positions = <30 31>;
+                        bindings = <&tog L1>;
+                };
+
+// * F-KEYS TOGGLE*
+// right index finger combo ,/.
+                combo_f_keys{
+                        timeout-ms = <100>;
+                        key-positions = <32 33>;
+                        bindings = <&tog L3>;
+                };
+
+// both num and f-keys toggled from right hand to avoid misclicks while gaming
+
+// * BLUETOOTH TOGGLE *
+// both index fingers combo
+                combo_f_keys{
+                        timeout-ms = <100>;
+                        key-positions = <4 5 6 7>;
                         bindings = <&tog L4>;
                 };
 
-// * REPEAT KEYS *
-// left index finger combo
-                combo_repeat_key_l{
-                        timeout-ms = <100>;
-                        key-positions = <16 17>;
-                        bindings = <&key_repeat>;
-                };
-
-// right index finger combo
-                combo_repeat_key_r{
-                        timeout-ms = <100>;
-                        key-positions = <18 19>;
-                        bindings = <&key_repeat>;
-                };
-
-// * HYPER MOD KEYS *
-// left index finger combo
-                combo_hyper_l{
-                        timeout-ms = <100>;
-                        key-positions = <28 29>;
-                        bindings = <&kp LS(LC(LA(LGUI)))>;
-                };
-
-// right index finger combo
-                combo_hyper_r{
-                        timeout-ms = <100>;
-                        key-positions = <30 31>;
-                        bindings = <&kp LS(LC(LA(LGUI)))>;
-                };
         };
 };
 
@@ -85,8 +98,8 @@
 / {
 	behaviors {
 
-// // * STICKY SHIFT & CAPS-WORD *
-// tweaking sticky key behaviour
+// // * STICKY SHIFT *
+// adjusting sticky key behaviour
 		sk: behavior_sticky_key {
                         compatible = "zmk,behavior-sticky-key";
                         label = "STICKY_KEY";
@@ -97,14 +110,16 @@
                         quick-release;
                 };
 
-		caps_word: behavior_caps_word {
-			compatible = "zmk,behavior-caps-word";
-			label = "CAPS_WORD";
-			#binding-cells = <0>;
-			continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
-		};
+// * CAPS WORD *
+// if either shift is double tapped
+                caps_word: behavior_caps_word {
+                        compatible = "zmk,behavior-caps-word";
+                        label = "CAPS_WORD";
+                        #binding-cells = <0>;
+                        continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
+                };
 
-// // sticky shift with double tap to activate caps_word
+// sticky shift with double tap to activate caps_word together
                 ss_cw: behavior_sticky_shift_caps_word {
                         compatible = "zmk,behavior-tap-dance";
                         label = "STICKY_SHIFT_CAPS_WORD";
@@ -178,7 +193,7 @@
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
 //                         | SHFT/CAPS |   Z   |   X   |   C   |   D   |   V   |            |   K   |   H   |   ,   |   .   |   /   | SHFT/CAPS |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                                                     | -/A+C | SP/ALT| _/CMD |            |  (/L2 | BS/L1 | )/L3  |
+//                                                     | -/A+C | 0/ALT | _/CMD |            |  (/L2 | BS/L1 |  REP  |
 //                                                     +-------+-------+-------+            +-------+-------+-------+
 
                         label = " Base L0 ";
@@ -186,9 +201,8 @@
 
  &kp TAB        &kp Q  &kp W  &kp F               &kp P           &kp B                     &kp J        &kp L        &kp U           &kp Y    &kp APOS  &kp DEL
  &mt LCTRL ESC  &kp A  &kp R  &kp S               &kp T           &kp G                     &kp M        &kp N        &kp E           &kp I    &kp O     &mt RCTRL RET
-//  &sk LSHFT      &kp Z  &kp X  &kp C               &kp D           &kp V                     &kp K        &kp H        &kp COMMA       &kp DOT  &kp FSLH  &sk RSHFT
  &ss_cw         &kp Z  &kp X  &kp C               &kp D           &kp V                     &kp K        &kp H        &kp COMMA       &kp DOT  &kp FSLH  &ss_cw
-                              &mt LA(LGUI) MINUS  &mt LALT SPACE  &mt LGUI UNDER            &lt L2 LPAR  &lt L1 BSPC  &lt L3 RPAR
+                              &mt LA(LGUI) MINUS  &mt LALT SPACE  &mt LGUI UNDER            &lt L2 LPAR  &lt L1 BSPC  &key_repeat
 
                         >;
                 };
@@ -198,21 +212,21 @@
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                         | TAB       |       |   7   |   8   |   9   |       |            |       |       |       |       |       | DEL       |
+//                         | TAB       |       |   7   |   8   |   9   |       |            |       | HOME  | PG_DN | PG_UP |  END  | DEL       |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
 //                         | ESC/CTRL  |       |   4   |   5   |   6   |       |            |       |  LFT  |  DWN  |  UP   |  RGT  | ENT/CTRL  |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                         | SHFT/CAPS |       |   1   |   2   |   3   |       |            |       | HOME  | PG_DN | PG_UP |  END  | SHFT/CAPS |
+//                         | SHFT/CAPS |       |   1   |   2   |   3   |       |            |       |       |   ,   |   .   |   /   | SHFT/CAPS |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                                                     | -/A+C | 0/ALT | _/CMD |            |  (/L2 | BS/L1 | )/L3  |
+//                                                     | -/A+C | 0/ALT | _/CMD |            |  (/L2 | BS/L1 |  REP  |
 //                                                     +-------+-------+-------+            +-------+-------+-------+
 
                         label = " Nav L1 ";
                         bindings = <
 
-                              &trans  &none  &kp N7  &kp N8  &kp N9       &none             &none   &none     &none      &none      &none      &trans
+                              &trans  &none  &kp N7  &kp N8  &kp N9       &none             &none   &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &trans
                               &trans  &none  &kp N4  &kp N5  &kp N6       &none             &none   &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans
-                              &trans  &none  &kp N1  &kp N2  &kp N3       &none             &none   &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &trans
+                              &trans  &none  &kp N1  &kp N2  &kp N3       &none             &none   &none     &kp COMMA  &kp DOT    &kp FSLH   &trans
                                                      &trans  &mt LALT N0  &trans            &trans  &trans    &trans
 
                         >;
@@ -227,9 +241,9 @@
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
 //                         | ESC/CTRL  |   ~   |   `   |   {   |   }   |   %   |            |   ^   |   [   |   ]   |   :   |   ;   | ENT/CTRL  |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                         | SHFT/CAPS |       |   €   |   #   |       |       |            |       |       |       |  "|"  |   \   | SHFT/CAPS |
+//                         | SHFT/CAPS |       |   €   |   #   |       |       |            |       |   (   |   )   |  "|"  |   \   | SHFT/CAPS |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                                                     | -/A+C | 0/ALT | _/CMD |            |  (/L2 | BS/L1 | )/L3  |
+//                                                     | -/A+C | 0/ALT | _/CMD |            |  (/L2 | BS/L1 |  REP  |
 //                                                     +-------+-------+-------+            +-------+-------+-------+
 
                         label = " Syms L2 ";
@@ -237,49 +251,76 @@
 
                   &trans  &kp EXCL   &kp AT      &kp LS(N3)  &kp DLLR  &none                &none      &kp AMPS  &kp ASTRK  &kp PLUS   &kp EQUAL  &trans
                   &trans  &kp TILDE  &kp GRAVE   &kp LBRC    &kp RBRC  &kp PRCNT            &kp CARET  &kp LBKT  &kp RBKT   &kp COLON  &kp SEMI   &trans
-                  &trans  &none      &kp LA(N2)  &kp LA(N3)  &none     &none                &none      &none     &none      &kp PIPE   &kp BSLH   &trans
+                  &trans  &none      &kp LA(N2)  &kp LA(N3)  &none     &none                &none      &kp LPAR  &kp RPAR   &kp PIPE   &kp BSLH   &trans
                                                  &trans      &trans    &trans               &trans     &trans    &trans
 
                         >;
                 };
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                layer_3_func {
+                layer_3_f_keys {
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
 //                         | TAB       |  F12  |  F7   |  F8   |  F9   |       |            |       |       |       |       |       | DEL       |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                         | ESC/CTRL  |  F11  |  F4   |  F5   |  F6   |       |            |  BC   |  B0   |  B1   |  B2   |  B3   | ENT/CTRL  |
+//                         | ESC/CTRL  |  F11  |  F4   |  F5   |  F6   |       |            |       |       |       |       |       | ENT/CTRL  |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
 //                         | SHFT/CAPS |  F10  |  F1   |  F2   |  F3   |       |            |       |       |       |       |       | SHFT/CAPS |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                                                     | -/A+C | 0/ALT | _/CMD |            |  (/L2 | BS/L1 | )/L3  |
+//                                                     | -/A+C | 0/ALT | _/CMD |            |  (/L2 | BS/L1 |  REP  |
 //                                                     +-------+-------+-------+            +-------+-------+-------+
 
                         label = " Func L3 ";
                         bindings = <
 
-                                 &trans  &kp F12  &kp F7  &kp F8  &kp F9  &none             &none       &none         &none         &none         &none         &trans
-                                 &trans  &kp F11  &kp F4  &kp F5  &kp F6  &none             &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &trans
-                                 &trans  &kp F10  &kp F1  &kp F2  &kp F3  &none             &none       &none         &none         &none         &none         &trans
-                                                          &trans  &trans  &trans            &trans      &trans        &trans
+                                 &trans  &kp F12  &kp F7  &kp F8  &kp F9  &none             &none   &none   &none   &none  &none  &trans
+                                 &trans  &kp F11  &kp F4  &kp F5  &kp F6  &none             &none   &none   &none   &none  &none  &trans
+                                 &trans  &kp F10  &kp F1  &kp F2  &kp F3  &none             &none   &none   &none   &none  &none  &trans
+                                                          &trans  &trans  &trans            &trans  &trans  &trans
 
                         >;
                 };
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                layer_4_game_a {
+                layer_4_bluetooth {
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
+//                         | TAB       |       |       |       |       |       |            |       |       |       |       |       | DEL       |
+//                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
+//                         | ESC/CTRL  |       |       |       |       |       |            |  BC   |  B0   |  B1   |  B2   |  B3   | ENT/CTRL  |
+//                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
+//                         | SHFT/CAPS |       |       |       |       |       |            |       |       |       |       |       | SHFT/CAPS |
+//                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
+//                                                     | -/A+C | 0/ALT | _/CMD |            |  (/L2 | BS/L1 |  REP  |
+//                                                     +-------+-------+-------+            +-------+-------+-------+
+
+                        label = " Blth L4 ";
+                        bindings = <
+
+                                       &trans  &none  &none  &none  &none  &none            &none       &none         &none         &none         &none         &trans
+                                       &trans  &none  &none  &none  &none  &none            &bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &trans
+                                       &trans  &none  &none  &none  &none  &none            &none       &none         &none         &none         &none         &trans
+                                                          &trans  &trans  &trans            &trans      &trans        &trans
+
+                        >;
+                };
+
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                layer_5_game_a {
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
 //                         | TAB       |   1   |   2   |   3   |   4   |   5   |            |       |       |       |       |       |           |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                         | CTRL      |   Q   |   W   |   E   |   R   |   T   |            |       |       |       |       |       |   L0/L4   |
+//                         | CTRL      |   Q   |   W   |   E   |   R   |   T   |            |       |       |       |       |       |           |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
 //                         | SHFT      |   A   |   S   |   D   |   F   |   G   |            |       |       |       |       |       |           |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                                                     | SPACE |  ALT  |  L5   |            | L0/L4 |       |       |
+//                                                     | SPACE |  ALT  |  L5   |            |       |       |       |
 //                                                     +-------+-------+-------+            +-------+-------+-------+
 
 //                                                                                                                          Side Mouse Buttons
@@ -298,15 +339,15 @@
                         bindings = <
 
                           &trans     &kp N1  &kp N2  &kp N3     &kp N4    &kp N5            &none  &none  &none  &none  &none  &none
-                          &kp LCTRL  &kp Q   &kp W   &kp E      &kp R     &kp T             &none  &none  &none  &none  &none  &trans
+                          &kp LCTRL  &kp Q   &kp W   &kp E      &kp R     &kp T             &none  &none  &none  &none  &none  &none
                           &trans     &kp A   &kp S   &kp D      &kp F     &kp G             &none  &none  &none  &none  &none  &none
-                                                     &kp SPACE  &kp LALT  &mo L5            &none  &none  &none
+                                                     &kp SPACE  &kp LALT  &mo L6            &none  &none  &none
 
                         >;
                 };
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                layer_5_game_b {
+                layer_6_game_b {
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
@@ -323,7 +364,7 @@
                         bindings = <
 
                          &kp GRAVE  &kp F1   &kp F2  &kp F3     &kp F4    &kp F5            &none  &none  &none  &none  &none  &none
-                         &kp ESC    &kp Y    &kp U   &kp I      &kp O     &kp P             &none  &none  &none  &none  &none  &trans
+                         &kp ESC    &kp Y    &kp U   &kp I      &kp O     &kp P             &none  &none  &none  &none  &none  &none
                          &kp F6     &kp H    &kp J   &kp K      &kp L     &kp M             &none  &none  &none  &none  &none  &none
                                                      &kp SPACE  &kp LALT  &none             &none  &none  &none
                         >;
