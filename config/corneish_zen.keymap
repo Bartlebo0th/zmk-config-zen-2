@@ -120,7 +120,7 @@
                         continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
                 };
 
-// sticky shift with double tap to activate caps_word together
+// 'sticky shift' with 'double tap to activate caps_word' together
                 ss_cw: behavior_sticky_shift_caps_word {
                         compatible = "zmk,behavior-tap-dance";
                         label = "STICKY_SHIFT_CAPS_WORD";
