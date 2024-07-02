@@ -218,9 +218,9 @@
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                         | TAB       |       |   7   |   8   |   9   |       |            |       | HOME  | PG_DN | PG_UP |  END  | DEL       |
+//                         | TAB       |       |   7   |   8   |   9   |       |            | HOME  | PG_DN | PG_UP |  END  |       | DEL       |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                         | ESC/CTRL  |       |   4   |   5   |   6   |       |            |       |  LFT  |  DWN  |  UP   |  RGT  | ENT/CTRL  |
+//                         | ESC/CTRL  |       |   4   |   5   |   6   |       |            |  LFT  |  DWN  |  UP   |  RGT  |       | ENT/CTRL  |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
 //                         | SHFT/CAPS |       |   1   |   2   |   3   |       |            |       |       |   ,   |   .   |   /   | SHFT/CAPS |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
@@ -230,10 +230,10 @@
                         label = " Nav L1 ";
                         bindings = <
 
-                              &trans  &none  &kp N7  &kp N8  &kp N9  &none                  &none   &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &trans
-                              &trans  &none  &kp N4  &kp N5  &kp N6  &none                  &none   &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans
-                              &trans  &none  &kp N1  &kp N2  &kp N3  &none                  &none   &none     &kp COMMA  &kp DOT    &kp FSLH   &trans
-                                                     &trans  &trans  &mt LGUI N0            &trans  &trans    &trans
+                              &trans  &none  &kp N7  &kp N8  &kp N9  &none                  &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &none     &trans
+                              &trans  &none  &kp N4  &kp N5  &kp N6  &none                  &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &none     &trans
+                              &trans  &none  &kp N1  &kp N2  &kp N3  &none                  &none     &none      &kp COMMA  &kp DOT    &kp FSLH  &trans
+                                                     &trans  &trans  &mt LGUI N0            &trans    &trans     &trans
 
                         >;
                 };
@@ -245,7 +245,7 @@
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
 //                         | TAB       |   !   |   @   |   £   |   $   |       |            |       |   &   |   *   |   +   |   =   | DEL       |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
-//                         | ESC/CTRL  |   ~   |   `   |   {   |   }   |   %   |            |   ^   |   [   |   ]   |   :   |   ;   | ENT/CTRL  |
+//                         | ESC/CTRL  |   ~   |   `   |   {   |   }   |   %   |            |   ^   |   [   |   ]   |   ;   |   :   | ENT/CTRL  |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
 //                         | SHFT/CAPS |       |   €   |   #   |       |       |            |       |   (   |   )   |  "|"  |   \   | SHFT/CAPS |
 //                         +-----------+-------+-------+-------+-------+-------+            +-------+-------+-------+-------+-------+-----------+
@@ -256,7 +256,7 @@
                         bindings = <
 
                   &trans  &kp EXCL   &kp AT      &kp LS(N3)  &kp DLLR  &none                &none      &kp AMPS  &kp ASTRK  &kp PLUS   &kp EQUAL  &trans
-                  &trans  &kp TILDE  &kp GRAVE   &kp LBRC    &kp RBRC  &kp PRCNT            &kp CARET  &kp LBKT  &kp RBKT   &kp COLON  &kp SEMI   &trans
+                  &trans  &kp TILDE  &kp GRAVE   &kp LBRC    &kp RBRC  &kp PRCNT            &kp CARET  &kp LBKT  &kp RBKT   &kp SEMI   &kp COLON  &trans
                   &trans  &none      &kp LA(N2)  &kp LA(N3)  &none     &none                &none      &kp LPAR  &kp RPAR   &kp PIPE   &kp BSLH   &trans
                                                  &trans      &trans    &trans               &trans     &trans    &trans
 
